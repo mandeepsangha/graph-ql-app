@@ -9,9 +9,11 @@ function Welcome() {
 
   const fetch = require("node-fetch");
 
+  let input2 = "furknyavuz";
+
   const body = {
     query: `
-      query{
+      query{ 
         user(login: "mandeepsangha") {
             repositories(affiliations: OWNER, isFork: false, first: 10) {
               nodes {
@@ -29,29 +31,20 @@ function Welcome() {
                   }
                 }
             }
+            
                   `,
   };
 
-  const body2 = {
-    query: `
-        query{
-            continents{
-                name
-                code
-            }
-        }`,
-  };
-
-  const body3 = {
-    query: `
-          query{
-            user(login: "mandeepsangha") {
-            pinnableItems {
-                totalCount
-              }
-            } 
-          }`,
-  };
+  // const body3 = {
+  //   query: `
+  //         query{
+  //           user(login: "mandeepsangha") {
+  //           pinnableItems {
+  //               totalCount
+  //             }
+  //           }
+  //         }`,
+  // };
 
   const baseUrl = "https://api.github.com/graphql";
 
@@ -78,16 +71,12 @@ function Welcome() {
     .then((response) => response.json())
     .then((data) => allData(JSON.stringify(data)));
 
-  // var sentiments = await fetch(baseUrl, {
-  //   method: "POST",
-  //   body: JSON.stringify(body),
-  // });
-
   let allData = (data) => {
     if (data) {
       let res = JSON.parse(data);
+
       let repoNodes = res.data.user.repositories.nodes;
-      //console.log(repoNodes);
+      console.log(repoNodes);
 
       repoNodes = repoNodes
         .filter((node) => node.languages.edges.length > 0)
@@ -122,9 +111,12 @@ function Welcome() {
           return result;
         }, {});
 
+      let max = Object.values(topLangs);
+      let maxKey = max[0].name;
       console.log(topLangs);
+      console.log(maxKey);
 
-      setTopTop(JSON.stringify(topLangs));
+      setTopTop(JSON.stringify(maxKey));
       //return topLangs;
     }
   };

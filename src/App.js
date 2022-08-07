@@ -62,17 +62,16 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img className="App-logo" alt="logo" />
         <div>
-          <Welcome />
+          Your Top Language is: <Welcome />
         </div>
-        <p>Hello</p>
+        <p></p>
         <input></input>
         <div>
-          <button >Button</button>
+          <button>Button</button>
         </div>
       </header>
-      <h1>SpaceX</h1>
+      <h1>MVF Project</h1>
     </div>
   );
 }
