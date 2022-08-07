@@ -1,9 +1,11 @@
 import "./App.css";
 import allData from "./fetchGraph";
 import Gallery from "./Gallery";
-import { useState, useEffect } from "react-query";
-import React from "react";
-
+import Welcome from "./fetchGraph";
+// import React from "react";
+// import { useState } from "react-query";
+import React, { useState } from "react";
+import axios from "axios";
 const github_data = {
   token: process.env.REACT_APP_API_KEY,
   username: "mandeepsangha",
@@ -30,39 +32,29 @@ const FILMS_QUERY = `
 `;
 
 function App() {
+  const [displayHello, setDisplayHello] = useState(false);
+
+  const handleClick = () => {
+    setDisplayHello(!displayHello);
+  };
   //const [launches, setLaunches] = useState();
 
-  // React.useEffect(() => {
-  //   fetch("https://api.github.com/graphql", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Authorization: "bearer " + github_data.token,
-  //     },
-  //     body: JSON.stringify({ query: FILMS_QUERY }),
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => console.log(data));
-  // }, []);
+  const [data, setDate] = useState([]);
 
-  // const { data, isLoading, error } = useQuery("launches", () => {
-  //   return fetch(endpoint, {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Authorization: "bearer " + github_data.token,
-  //     },
-  //     body: JSON.stringify({ query: FILMS_QUERY }),
-  //   })
-  //     .then((response) => {
-  //       if (response.status >= 400) {
-  //         throw new Error("Error fetching data");
-  //       } else {
-  //         return response.json();
-  //       }
-  //     })
-  //     .then((data) => data.data);
-  // });
+  //   useEffect ( () => {
+  // const fetchData = async () => {
+  //   //call GraphQL API
+  //   const queryResult = await axios.post (
+  //     "https://api.github.com/graphql", {
+  //       query: FILMS_QUERY
+  //     }
+  //   );
+  //   //update the compoenet state
+  //   const result = queryResult.data.data
+  //   setData(result)
+  //   };
+  //   fetchData();
+  // },[])
 
   // if (isLoading) return "Loading...";
   // if (error) return <pre>{error.message}</pre>;
@@ -71,8 +63,14 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img className="App-logo" alt="logo" />
+        <div>
+          <Welcome />
+        </div>
         <p>Hello</p>
-        <Gallery />
+        <input></input>
+        <div>
+          <button >Button</button>
+        </div>
       </header>
       <h1>SpaceX</h1>
     </div>
