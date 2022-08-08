@@ -2,10 +2,13 @@ import "./App.css";
 import allData from "./fetchGraph";
 import Gallery from "./Gallery";
 import Welcome from "./fetchGraph";
+
+import main from "./apollo";
 // import React from "react";
 // import { useState } from "react-query";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+
 const github_data = {
   token: process.env.REACT_APP_API_KEY,
   username: "mandeepsangha",
@@ -39,7 +42,7 @@ function App() {
   };
   //const [launches, setLaunches] = useState();
 
-  const [data, setDate] = useState([]);
+  const [data, setData] = useState();
 
   //   useEffect ( () => {
   // const fetchData = async () => {
@@ -62,9 +65,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div>
-          Your Top Language is: <Welcome />
-        </div>
+        <div>Your Top Language is:</div>
         <p></p>
         <input></input>
         <div>

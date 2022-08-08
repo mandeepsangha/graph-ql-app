@@ -42,5 +42,5 @@ async function main() {
   const queryData = await graphQLClient.request(query, variables2);
   console.log(JSON.stringify(queryData, undefined, 2));
 }
-
 main();
+export default main;

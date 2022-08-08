@@ -76,7 +76,7 @@ function Welcome() {
       let res = JSON.parse(data);
 
       let repoNodes = res.data.user.repositories.nodes;
-      console.log(repoNodes);
+      //console.log(repoNodes);
 
       repoNodes = repoNodes
         .filter((node) => node.languages.edges.length > 0)
@@ -113,8 +113,8 @@ function Welcome() {
 
       let max = Object.values(topLangs);
       let maxKey = max[0].name;
-      console.log(topLangs);
-      console.log(maxKey);
+      //console.log(topLangs);
+      //console.log(maxKey);
 
       setTopTop(JSON.stringify(maxKey));
       //return topLangs;
