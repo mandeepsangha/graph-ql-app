@@ -2,8 +2,9 @@ import "./App.css";
 import allData from "./fetchGraph";
 import Gallery from "./Gallery";
 import Welcome from "./fetchGraph";
-
 import main from "./apollo";
+import OneShow from "./OneShow";
+
 // import React from "react";
 // import { useState } from "react-query";
 import React, { useState, useEffect } from "react";
@@ -13,26 +14,6 @@ const github_data = {
   token: process.env.REACT_APP_API_KEY,
   username: "mandeepsangha",
 };
-
-const endpoint = "https://api.github.com/graphql";
-const FILMS_QUERY = `
-  user(login: "mandeepsangha") {
-      repositories(affiliations: OWNER, isFork: false, first: 10) {
-        nodes {
-          name 
-          languages(first:10,orderBy:{field:SIZE,direction:DESC}){
-            edges {
-                    size
-                    node {
-                      color
-                      name
-                    }
-                  }
-   }
-              }
-            }
-          }         
-`;
 
 function App() {
   const [displayHello, setDisplayHello] = useState(false);
@@ -44,28 +25,16 @@ function App() {
 
   const [data, setData] = useState();
 
-  //   useEffect ( () => {
-  // const fetchData = async () => {
-  //   //call GraphQL API
-  //   const queryResult = await axios.post (
-  //     "https://api.github.com/graphql", {
-  //       query: FILMS_QUERY
-  //     }
-  //   );
-  //   //update the compoenet state
-  //   const result = queryResult.data.data
-  //   setData(result)
-  //   };
-  //   fetchData();
-  // },[])
-
   // if (isLoading) return "Loading...";
   // if (error) return <pre>{error.message}</pre>;
 
   return (
     <div className="App">
       <header className="App-header">
-        <div>Your Top Language is:</div>
+        <div>
+          Your Top Language is:
+          <OneShow />
+        </div>
         <p></p>
         <input></input>
         <div>

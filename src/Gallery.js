@@ -26,7 +26,7 @@ const FILMS_QUERY = `
   `;
 
 function Gallery() {
-  const [gallerResults, setGalleryResults] = useState([]);
+  const [galleryResults, setGalleryResults] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
