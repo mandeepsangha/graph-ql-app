@@ -6,14 +6,14 @@ async function main() {
   const graphQLClient = new GraphQLClient(endpoint, {
     headers: {
       "Content-Type": "application/json",
-      Authorization: "bearer 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",
+      Authorization: `bearer ` + "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",
     },
   });
 
   const query = gql`
     query ($login: String!) {
       user(login: $login) {
-        repositories(affiliations: OWNER, isFork: false, first: 10) {
+        repositories(isFork: false, first: 10) {
           nodes {
             name
             languages(first: 10, orderBy: { field: SIZE, direction: DESC }) {
