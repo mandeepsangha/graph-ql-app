@@ -1,6 +1,6 @@
 import "./App.css";
 import OneShow from "./OneShow";
-
+import Home from "./Home";
 // import React from "react";
 // import { useState } from "react-query";
 import React, { useState, useEffect } from "react";
@@ -28,14 +28,10 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div>
-          Your Top Language is:
+          Favoured Language on Github is:
           <OneShow />
         </div>
-        <p></p>
-        <input></input>
-        <div>
-          <button>Button</button>
-        </div>
+        <Home />
       </header>
       <h1>MVF Project</h1>
     </div>
@@ -43,3 +39,4 @@ function App() {
 }
 
 export default App;
+
