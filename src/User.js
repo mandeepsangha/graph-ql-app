@@ -1,5 +1,11 @@
 import react from "react";
+import OneShow from "./OneShow";
 
 export default function User({ username }) {
-  return <div>for user {username}</div>;
+  return (
+    <div>
+      <div>{username} :</div>
+      <OneShow username={username} />
+    </div>
+  );
 }

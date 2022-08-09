@@ -12,14 +12,14 @@ const github_data = {
 };
 
 function App() {
-  const [displayHello, setDisplayHello] = useState(false);
+  // const [displayHello, setDisplayHello] = useState(false);
 
-  const handleClick = () => {
-    setDisplayHello(!displayHello);
-  };
+  // const handleClick = () => {
+  //   setDisplayHello(!displayHello);
+  // };
   //const [launches, setLaunches] = useState();
 
-  const [data, setData] = useState();
+  //const [data, setData] = useState();
 
   // if (isLoading) return "Loading...";
   // if (error) return <pre>{error.message}</pre>;
@@ -27,10 +27,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div>
-          Favoured Language on Github is:
-          <OneShow />
-        </div>
+        <div>The Favoured Language on Github for</div>
         <Home />
       </header>
       <h1>MVF Project</h1>
@@ -39,4 +36,3 @@ function App() {
 }
 
 export default App;
-

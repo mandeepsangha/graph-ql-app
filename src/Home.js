@@ -1,5 +1,7 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import User from "./User";
+import main from "./apollo";
+import OneShow from "./OneShow";
 
 export default function Home() {
   const inputRef = useRef();
@@ -11,6 +13,7 @@ export default function Home() {
     const githubUsername = inputRef.current.value;
     if (!githubUsername.trim()) return;
     setUserName(githubUsername);
+    console.log(githubUsername);
     e.target.reset();
   };
   //console.log(username);

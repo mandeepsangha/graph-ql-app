@@ -1,26 +1,15 @@
 import react, { useState, useEffect } from "react";
 
-function OneShow() {
-  const [toptop, setTopTop] = useState("");
+function OneShow({ username }) {
   const [counter, setCounter] = useState("");
-
-  //main().then((data) => setTopTop(data));
-  // useEffect(() => {
-  //   main().then((data) => setTopTop(allData(data)));
-  // }, [toptop]);
-
-  // useEffect(() => {
-
-  // }, [toptop]);
+  //console.log({username})
 
   let allData = (input) => {
     if (input) {
       let res = JSON.parse(input);
       //console.log(res)
       let repoNodes = "";
-
       repoNodes = res.user.repositories.nodes;
-
       //let repoNodes = res.data.user.repositories.nodes;
       //console.log(repoNodes);
 
@@ -60,7 +49,7 @@ function OneShow() {
       let max = Object.values(topLangs);
       let maxKey = max[0].name;
       //console.log(topLangs);
-      console.log(typeof maxKey);
+      //console.log(maxKey);
 
       setCounter(JSON.stringify(maxKey));
       //console.log(toptop)
@@ -68,16 +57,13 @@ function OneShow() {
   };
 
   useEffect(() => {
-    main().then((data) => setTopTop(allData(data)));
+    main().then((data) => allData(data));
   }, []);
 
   return <p>{counter}</p>;
-
-  //return <p>{toptop ? allData(toptop) : ""}</p>;
 }
 
 export default OneShow;
-
 
 const { GraphQLClient, gql } = require("graphql-request");
 
@@ -112,17 +98,17 @@ async function main() {
     }
   `;
 
-  const variables = {
-    login: "mandeepsangha",
-  };
-
   const variables2 = {
     login: "hachi-ops",
   };
 
-  const queryData = await graphQLClient.request(query, variables2);
+  const queryData = await graphQLClient.request(query, variables);
 
   return JSON.stringify(queryData, undefined, 2);
 }
 
+const variables = {
+  login: "mandeepsangha",
+};
 
+variables.login = "hachi-ops";
