@@ -3,14 +3,19 @@ import react, { useState, useEffect } from "react";
 import main from "./apollo";
 
 function OneShow() {
-  const [toptop, setTopTop] = useState("hello");
+  const [toptop, setTopTop] = useState("");
+  let output = 0;
 
-  useEffect(() => {
-    let output = main();
-    console.log(output);
-  }, []);
+  main().then((data) => setTopTop(data));
+
+  // useEffect(() => {
+  //   if (!toptop) {
+  //     output = main();
+  //   }
+  // }, []);
 
   let allData = (data) => {
+    data = toptop;
     if (data) {
       let res = JSON.parse(data);
 
