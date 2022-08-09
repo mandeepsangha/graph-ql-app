@@ -39,7 +39,7 @@ async function main() {
     login: "hachi-ops",
   };
 
-  const queryData = await graphQLClient.request(query, variables2);
+  const queryData = await graphQLClient.request(query, variables);
 
   return JSON.stringify(queryData, undefined, 2);
 }

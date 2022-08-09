@@ -1,8 +1,4 @@
 import "./App.css";
-import allData from "./fetchGraph";
-import Gallery from "./Gallery";
-import Welcome from "./fetchGraph";
-import main from "./apollo";
 import OneShow from "./OneShow";
 
 // import React from "react";

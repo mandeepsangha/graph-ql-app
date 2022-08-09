@@ -4,22 +4,26 @@ import main from "./apollo";
 
 function OneShow() {
   const [toptop, setTopTop] = useState("");
-  let output = 0;
+  const [counter, setCounter] = useState("");
 
-  main().then((data) => setTopTop(data));
+  //main().then((data) => setTopTop(data));
+  // useEffect(() => {
+  //   main().then((data) => setTopTop(allData(data)));
+  // }, [toptop]);
 
   // useEffect(() => {
-  //   if (!toptop) {
-  //     output = main();
-  //   }
-  // }, []);
 
-  let allData = (data) => {
-    data = toptop;
-    if (data) {
-      let res = JSON.parse(data);
+  // }, [toptop]);
 
-      let repoNodes = res.data.user.repositories.nodes;
+  let allData = (input) => {
+    if (input) {
+      let res = JSON.parse(input);
+      //console.log(res)
+      let repoNodes = "";
+
+      repoNodes = res.user.repositories.nodes;
+
+      //let repoNodes = res.data.user.repositories.nodes;
       //console.log(repoNodes);
 
       repoNodes = repoNodes
@@ -58,14 +62,20 @@ function OneShow() {
       let max = Object.values(topLangs);
       let maxKey = max[0].name;
       //console.log(topLangs);
-      //console.log(maxKey);
+      console.log(typeof maxKey);
 
-      setTopTop(JSON.stringify(maxKey));
-      //return topLangs;
+      setCounter(JSON.stringify(maxKey));
+      //console.log(toptop)
     }
   };
 
-  return <p>{toptop}</p>;
+  useEffect(() => {
+    main().then((data) => setTopTop(allData(data)));
+  }, []);
+
+  return <p>{counter}</p>;
+
+  //return <p>{toptop ? allData(toptop) : ""}</p>;
 }
 
 export default OneShow;
