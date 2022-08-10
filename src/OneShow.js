@@ -2,7 +2,6 @@ import react, { useState, useEffect } from "react";
 
 function OneShow({ username }) {
   const [counter, setCounter] = useState("");
-  const [name, SetName] = useState("{ username }");
 
   let variables = username;
 
@@ -71,11 +70,12 @@ const { GraphQLClient, gql } = require("graphql-request");
 
 async function main(variablesinput) {
   const endpoint = "https://api.github.com/graphql";
-  console.log(variablesinput);
+  //console.log(variablesinput);
   const graphQLClient = new GraphQLClient(endpoint, {
     headers: {
       "Content-Type": "application/json",
-      Authorization: `bearer ` + "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",
+      //Authorization: `bearer ` + "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",
+      Authorization: `Bearer ${process.env.REACT_APP_GITHUB_PERSONAL_ACCESS_TOKEN}`,
     },
   });
 
@@ -104,9 +104,9 @@ async function main(variablesinput) {
     login: variablesinput,
   };
 
-  console.log(variablesinput);
-
-  const queryData = await graphQLClient.request(query, variables);
-
-  return JSON.stringify(queryData, undefined, 2);
+  //console.log(variablesinput);
+  if (variablesinput) {
+    const queryData = await graphQLClient.request(query, variables);
+    return JSON.stringify(queryData, undefined, 2);
+  }
 }
