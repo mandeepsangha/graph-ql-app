@@ -1,6 +1,5 @@
 import { useRef, useState, useEffect, createContext } from "react";
 import User from "./User";
-import main from "./apollo";
 import OneShow from "./OneShow";
 export const StateContext = createContext();
 

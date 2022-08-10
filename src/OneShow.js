@@ -82,10 +82,10 @@ async function main(variablesinput) {
   const query = gql`
     query ($login: String!) {
       user(login: $login) {
-        repositories(isFork: false, first: 10) {
+        repositories(isFork: false, first: 100) {
           nodes {
             name
-            languages(first: 10, orderBy: { field: SIZE, direction: DESC }) {
+            languages(first: 100, orderBy: { field: SIZE, direction: DESC }) {
               edges {
                 size
                 node {
@@ -106,17 +106,7 @@ async function main(variablesinput) {
 
   console.log(variablesinput);
 
-  let variables2 = {
-    login: "hachi-ops",
-  };
-
   const queryData = await graphQLClient.request(query, variables);
 
   return JSON.stringify(queryData, undefined, 2);
 }
-
-// const variables = {
-//   login: "mandeepsangha",
-// };
-
-// let variables.login = "";
