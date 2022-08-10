@@ -74,8 +74,8 @@ async function main(variablesinput) {
   const graphQLClient = new GraphQLClient(endpoint, {
     headers: {
       "Content-Type": "application/json",
-
-      Authorization: `bearer ${process.env.REACT_APP_GITHUB_PERSONAL_ACCESS_TOKEN}`,
+      //Authorization: `bearer ${process.env.REACT_APP_GITHUB_PERSONAL_ACCESS_TOKEN}`,
+      //Authorization: "bearer " + "key",
     },
   });
 

@@ -1,15 +1,11 @@
 import "./App.css";
-import OneShow from "./OneShow";
+
 import Home from "./Home";
 // import React from "react";
 // import { useState } from "react-query";
-import React, { useState, useEffect } from "react";
-import axios from "axios";
 
-const github_data = {
-  token: process.env.REACT_APP_API_KEY,
-  username: "mandeepsangha",
-};
+
+
 
 function App() {
   // const [displayHello, setDisplayHello] = useState(false);
