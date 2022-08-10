@@ -2,7 +2,9 @@ import react, { useState, useEffect } from "react";
 
 function OneShow({ username }) {
   const [counter, setCounter] = useState("");
-  //console.log({username})
+  const [name, SetName] = useState("{ username }");
+
+  let variables = username;
 
   let allData = (input) => {
     if (input) {
@@ -57,8 +59,8 @@ function OneShow({ username }) {
   };
 
   useEffect(() => {
-    main().then((data) => allData(data));
-  }, []);
+    main(variables).then((data) => allData(data));
+  }, [variables]);
 
   return <p>{counter}</p>;
 }
@@ -67,9 +69,9 @@ export default OneShow;
 
 const { GraphQLClient, gql } = require("graphql-request");
 
-async function main() {
+async function main(variablesinput) {
   const endpoint = "https://api.github.com/graphql";
-
+  console.log(variablesinput);
   const graphQLClient = new GraphQLClient(endpoint, {
     headers: {
       "Content-Type": "application/json",
@@ -98,7 +100,13 @@ async function main() {
     }
   `;
 
-  const variables2 = {
+  let variables = {
+    login: variablesinput,
+  };
+
+  console.log(variablesinput);
+
+  let variables2 = {
     login: "hachi-ops",
   };
 
@@ -107,8 +115,8 @@ async function main() {
   return JSON.stringify(queryData, undefined, 2);
 }
 
-const variables = {
-  login: "mandeepsangha",
-};
+// const variables = {
+//   login: "mandeepsangha",
+// };
 
-variables.login = "hachi-ops";
+// let variables.login = "";
