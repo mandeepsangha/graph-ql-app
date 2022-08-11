@@ -27,7 +27,7 @@ export default function Home() {
           placeholder=""
         />
         <div>Please type in a Github Username</div>
-        <button type ="submit">Submit</button>
+        <button data-testid="button" type ="submit">Submit</button>
       </form>
     </div>
   );
