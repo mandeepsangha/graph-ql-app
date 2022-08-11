@@ -1,6 +1,6 @@
-import { useRef, useState, useEffect, createContext } from "react";
+import { useRef, useState, createContext } from "react";
 import User from "./User";
-import OneShow from "./OneShow";
+
 export const StateContext = createContext();
 
 export default function Home() {
@@ -9,14 +9,13 @@ export default function Home() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //console.log(inputRef.current.value);
+
     const githubUsername = inputRef.current.value;
     if (!githubUsername.trim()) return;
     setUserName(githubUsername);
-    //console.log(githubUsername);
+
     e.target.reset();
   };
-  //console.log(username);
 
   return (
     <div>

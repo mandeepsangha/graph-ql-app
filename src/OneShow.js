@@ -8,11 +8,9 @@ function OneShow({ username }) {
   let allData = (input) => {
     if (input) {
       let res = JSON.parse(input);
-      //console.log(res)
+
       let repoNodes = "";
       repoNodes = res.user.repositories.nodes;
-      //let repoNodes = res.data.user.repositories.nodes;
-      //console.log(repoNodes);
 
       repoNodes = repoNodes
         .filter((node) => node.languages.edges.length > 0)
@@ -21,7 +19,6 @@ function OneShow({ username }) {
         .reduce((acc, prev) => {
           // get the size of the language (bytes)
           let langSize = prev.size;
-
           // if we already have the language in the accumulator
           // & the current language name is same as previous name
           // add the size to the language size.
@@ -47,20 +44,17 @@ function OneShow({ username }) {
           return result;
         }, {});
 
-      let max = Object.values(topLangs);
-      let maxKey = max[0].name;
-      //console.log(topLangs);
-      //console.log(maxKey);
-
-      setCounter(JSON.stringify(maxKey));
-      //console.log(toptop)
+      let maxList = Object.values(topLangs);
+      let maxKey = maxList[0].name;
+      let result = JSON.stringify(maxKey).replace(/["']/g, "");
+      setCounter(result);
     }
   };
 
   useEffect(() => {
-    main(variables).then((data) => allData(data));
+    mainRequest(variables).then((data) => allData(data));
   }, [variables]);
-
+  console.log(typeof counter);
   return <p>{counter}</p>;
 }
 
@@ -68,14 +62,12 @@ export default OneShow;
 
 const { GraphQLClient, gql } = require("graphql-request");
 
-async function main(variablesinput) {
+async function mainRequest(variablesinput) {
   const endpoint = "https://api.github.com/graphql";
-  //console.log(variablesinput);
   const graphQLClient = new GraphQLClient(endpoint, {
     headers: {
       "Content-Type": "application/json",
-      //Authorization: `bearer ${process.env.REACT_APP_GITHUB_PERSONAL_ACCESS_TOKEN}`,
-      //Authorization: "bearer " + "key",
+      Authorization: `bearer ${process.env.REACT_APP_GITHUB_PERSONAL_ACCESS_TOKEN}`,
     },
   });
 

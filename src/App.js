@@ -1,24 +1,12 @@
 import "./App.css";
 
 import Home from "./Home";
-// import React from "react";
-// import { useState } from "react-query";
+
 
 
 
 
 function App() {
-  // const [displayHello, setDisplayHello] = useState(false);
-
-  // const handleClick = () => {
-  //   setDisplayHello(!displayHello);
-  // };
-  //const [launches, setLaunches] = useState();
-
-  //const [data, setData] = useState();
-
-  // if (isLoading) return "Loading...";
-  // if (error) return <pre>{error.message}</pre>;
 
   return (
     <div className="App">
