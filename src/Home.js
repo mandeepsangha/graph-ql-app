@@ -24,8 +24,10 @@ export default function Home() {
         <input
           ref={inputRef}
           type="search"
-          placeholder="enter a github username"
+          placeholder=""
         />
+        <div>Please type in a Github Username</div>
+        <button type ="submit">Submit</button>
       </form>
     </div>
   );

@@ -6,6 +6,8 @@ function OneShow({ username }) {
   let variables = username;
 
   let allData = (input) => {
+
+    console.log(input)
     if (input) {
       let res = JSON.parse(input);
 
