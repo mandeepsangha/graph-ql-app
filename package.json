@@ -8,7 +8,8 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
     "dotenv": "^16.0.1",
-    "node": "^18.7.0",
+    "graphql": "^16.6.0",
+    "node": "^16.17.0",
     "node-fetch": "^2.6.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -22,7 +23,6 @@
     "test": "react-scripts test",
     "test2": "jest --coverage",
     "eject": "react-scripts eject"
-
   },
   "eslintConfig": {
     "extends": [
