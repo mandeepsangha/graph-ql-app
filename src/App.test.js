@@ -10,8 +10,3 @@ test("There is no quotation marks in output when input has quotations marks", ()
   let string = ` "SASS" `;
   expect(string).toMatch((/["]/g, ""));
 });
-
-test("There is no quotation marks in output", () => {
-  let string = "SASS";
-  expect(string).toMatch((/["]/g, ""));
-});

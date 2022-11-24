@@ -6,13 +6,10 @@ function OneShow({ username }) {
   let variables = username;
 
   let allData = (input) => {
-
-    console.log(input)
     if (input) {
       let res = JSON.parse(input);
 
-      let repoNodes = "";
-      repoNodes = res.user.repositories.nodes;
+      let repoNodes = res.user.repositories.nodes;
 
       repoNodes = repoNodes
         .filter((node) => node.languages.edges.length > 0)
@@ -46,17 +43,21 @@ function OneShow({ username }) {
           return result;
         }, {});
 
+      // Object sorted with top language by bytes of code at top
       let maxList = Object.values(topLangs);
+      //top language
       let maxKey = maxList[0].name;
+      // turn into string and remove quotation marks from output
       let result = JSON.stringify(maxKey).replace(/["']/g, "");
       setCounter(result);
     }
   };
 
+  // when variables changes it makes the graphQL request and renders output "counter" on page
   useEffect(() => {
     mainRequest(variables).then((data) => allData(data));
   }, [variables]);
-  console.log(typeof counter);
+  //console.log(typeof counter);
   return <p>{counter}</p>;
 }
 
